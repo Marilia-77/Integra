@@ -1,5 +1,10 @@
 package com.integra.demo.repositories;
 
-public class TurmaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.integra.demo.entities.Turma;
+@Repository
+public interface TurmaRepository extends JpaRepository<Turma, Long> {
 
 }

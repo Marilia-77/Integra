@@ -11,6 +11,7 @@ import com.integra.demo.dto.OcorrenciaResponseDTO;
 import com.integra.demo.entities.Aluno;
 import com.integra.demo.entities.Ocorrencia;
 import com.integra.demo.entities.Professor;
+import com.integra.demo.exception.NotFoundException;
 import com.integra.demo.repositories.AlunoRepository;
 import com.integra.demo.repositories.OcorrenciaRepository;
 import com.integra.demo.repositories.ProfessorRepository;
@@ -50,7 +51,7 @@ public class OcorrenciaService {
 
         if (dto.idProfessor() != null) {
             Professor p = professorRepository.findById(dto.idProfessor())
-                    .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
+                    .orElseThrow(() -> new NotFoundException("Professor não encontrado"));
             o.setProfessor(p);
         } else {
             o.setProfessor(null);
@@ -58,7 +59,7 @@ public class OcorrenciaService {
 
         if (dto.idAluno() != null) {
             Aluno a = alunoRepository.findById(dto.idAluno())
-                    .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+                    .orElseThrow(() -> new NotFoundException("Aluno não encontrado"));
             o.setAluno(a);
         } else {
             o.setAluno(null);
@@ -71,7 +72,7 @@ public class OcorrenciaService {
 
     public OcorrenciaResponseDTO findByIdOcorrencia(Long id) {
         Ocorrencia o = ocorrenciaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Ocorrência não encontrada"));
+                .orElseThrow(() -> new NotFoundException("Ocorrência não encontrada"));
         return toResponse(o);
     }
 
@@ -83,7 +84,7 @@ public class OcorrenciaService {
 
     public OcorrenciaResponseDTO atualizarOcorrencia(Long id, OcorrenciaRequestDTO dto) {
         Ocorrencia existente = ocorrenciaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Ocorrência não encontrada"));
+                .orElseThrow(() -> new NotFoundException("Ocorrência não encontrada"));
         aplicar(existente, dto);
         return toResponse(ocorrenciaRepository.save(existente));
     }

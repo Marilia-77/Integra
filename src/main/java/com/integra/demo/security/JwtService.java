@@ -3,34 +3,38 @@ package com.integra.demo.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 @Service
 public class JwtService {
 
-    private static final String SECRET = "chave-super-secreta-do-integra-com-32-caracteres-minimo";
-    private static final SecretKey KEY = Keys.hmacShaKeyFor(SECRET.getBytes());
-    private static final long EXPIRACAO_MS = 1000 * 60 * 60 * 8; // 8 horas
+    private final SecretKey key;
+    private final long expiracaoMs;
+
+    public JwtService(
+            @Value("${integra.jwt.secret}") String secret,
+            @Value("${integra.jwt.expiration-ms:28800000}") long expiracaoMs) {
+        this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+        this.expiracaoMs = expiracaoMs;
+    }
 
     public String gerarToken(String email, String role) {
         return Jwts.builder()
                 .subject(email)
                 .claim("role", role)
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + EXPIRACAO_MS))
-                .signWith(KEY)
+                .expiration(new Date(System.currentTimeMillis() + expiracaoMs))
+                .signWith(key)
                 .compact();
     }
 
     public Claims extrairClaims(String token) {
-        return Jwts.parser()
-                .verifyWith(KEY)
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
+        return Jwts.parser().verifyWith(key).build().parseSignedClaims(token).getPayload();
     }
 
     public String extrairEmail(String token) {

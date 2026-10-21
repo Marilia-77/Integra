@@ -9,9 +9,10 @@ import com.integra.demo.dto.RecomendacaoIARequestDTO;
 import com.integra.demo.dto.RecomendacaoIAResponseDTO;
 import com.integra.demo.services.RecomendacaoIAService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/recomendacoes")
-@CrossOrigin(origins = "*")
 public class RecomendacaoIAController {
 
     private final RecomendacaoIAService recomendacaoIAService;
@@ -21,8 +22,13 @@ public class RecomendacaoIAController {
     }
 
     @PostMapping
-    public ResponseEntity<RecomendacaoIAResponseDTO> cadastrar(@RequestBody RecomendacaoIARequestDTO dto) {
+    public ResponseEntity<RecomendacaoIAResponseDTO> cadastrar(@RequestBody @Valid RecomendacaoIARequestDTO dto) {
         return ResponseEntity.ok(recomendacaoIAService.cadastrarRecomendacao(dto));
+    }
+
+    @PostMapping("/gerar/{idOcorrencia}")
+    public ResponseEntity<RecomendacaoIAResponseDTO> gerarPorOcorrencia(@PathVariable Long idOcorrencia) {
+        return ResponseEntity.ok(recomendacaoIAService.gerarRecomendacaoPorOcorrencia(idOcorrencia));
     }
 
     @GetMapping
@@ -36,7 +42,8 @@ public class RecomendacaoIAController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RecomendacaoIAResponseDTO> atualizar(@PathVariable Long id, @RequestBody RecomendacaoIARequestDTO dto) {
+    public ResponseEntity<RecomendacaoIAResponseDTO> atualizar(@PathVariable Long id,
+                                                                @RequestBody @Valid RecomendacaoIARequestDTO dto) {
         return ResponseEntity.ok(recomendacaoIAService.atualizarRecomendacao(id, dto));
     }
 }

@@ -10,6 +10,7 @@ import com.integra.demo.dto.FrequenciaResponseDTO;
 import com.integra.demo.entities.Aluno;
 import com.integra.demo.entities.Frequencia;
 import com.integra.demo.entities.Materia;
+import com.integra.demo.exception.NotFoundException;
 import com.integra.demo.repositories.AlunoRepository;
 import com.integra.demo.repositories.FrequenciaRepository;
 import com.integra.demo.repositories.MateriaRepository;
@@ -43,12 +44,12 @@ public class FrequenciaService {
 
         if (dto.idAluno() != null) {
             Aluno a = alunoRepository.findById(dto.idAluno())
-                    .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+                    .orElseThrow(() -> new NotFoundException("Aluno não encontrado"));
             f.setAluno(a);
         }
         if (dto.idMateria() != null) {
             Materia m = materiaRepository.findById(dto.idMateria())
-                    .orElseThrow(() -> new RuntimeException("Matéria não encontrada"));
+                    .orElseThrow(() -> new NotFoundException("Matéria não encontrada"));
             f.setMateria(m);
         }
     }
@@ -65,13 +66,13 @@ public class FrequenciaService {
 
     public FrequenciaResponseDTO buscarPorIdFrequencia(Long id) {
         Frequencia f = frequenciaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Frequência não encontrada"));
+                .orElseThrow(() -> new NotFoundException("Frequência não encontrada"));
         return toResponse(f);
     }
 
     public FrequenciaResponseDTO atualizarFrequencia(Long id, FrequenciaRequestDTO dto) {
         Frequencia existente = frequenciaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Frequência não encontrada"));
+                .orElseThrow(() -> new NotFoundException("Frequência não encontrada"));
         aplicar(existente, dto);
         return toResponse(frequenciaRepository.save(existente));
     }
@@ -87,7 +88,7 @@ public class FrequenciaService {
 
     public FrequenciaResponseDTO buscarPorAlunoEMateria(Long idAluno, Long idMateria) {
         Frequencia f = frequenciaRepository.findByAlunoIdAlunoAndMateriaIdMateria(idAluno, idMateria)
-                .orElseThrow(() -> new RuntimeException("Frequência não encontrada"));
+                .orElseThrow(() -> new NotFoundException("Frequência não encontrada"));
         return toResponse(f);
     }
 

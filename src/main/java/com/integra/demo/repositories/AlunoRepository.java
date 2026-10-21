@@ -12,7 +12,7 @@ import com.integra.demo.entities.Turma;
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 
-    Optional<Aluno> findByEmailAlunoAndSenhaAluno(String emailAluno, String senhaAluno);
+    Optional<Aluno> findByEmailAluno(String emailAluno);
 
     List<Aluno> findByTurma(Turma turma);
 }

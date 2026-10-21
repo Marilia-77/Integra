@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.*;
 
 import com.integra.demo.dto.AlunoRequestDTO;
 import com.integra.demo.dto.AlunoResponseDTO;
+import com.integra.demo.dto.LoginRequestDTO;
+import com.integra.demo.dto.LoginResponseDTO;
 import com.integra.demo.services.AlunoService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/aluno")
-@CrossOrigin(origins = "*")
 public class AlunoController {
 
     private final AlunoService alunoService;
@@ -21,7 +24,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    public ResponseEntity<AlunoResponseDTO> cadastrar(@RequestBody AlunoRequestDTO dto) {
+    public ResponseEntity<AlunoResponseDTO> cadastrar(@RequestBody @Valid AlunoRequestDTO dto) {
         return ResponseEntity.ok(alunoService.cadastrarAluno(dto));
     }
 
@@ -36,7 +39,8 @@ public class AlunoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AlunoResponseDTO> atualizar(@PathVariable Long id, @RequestBody AlunoRequestDTO dto) {
+    public ResponseEntity<AlunoResponseDTO> atualizar(@PathVariable Long id,
+                                                       @RequestBody @Valid AlunoRequestDTO dto) {
         return ResponseEntity.ok(alunoService.atualizarAluno(id, dto));
     }
 
@@ -47,10 +51,8 @@ public class AlunoController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AlunoResponseDTO> login(
-            @RequestParam("emailAluno") String emailAluno,
-            @RequestParam("senhaAluno") String senhaAluno) {
-        return ResponseEntity.ok(alunoService.login(emailAluno, senhaAluno));
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginRequestDTO dto) {
+        return ResponseEntity.ok(alunoService.login(dto));
     }
 
     @PostMapping("/porTurma")

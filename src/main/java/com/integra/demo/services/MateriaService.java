@@ -5,44 +5,38 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.integra.demo.entities.Materia;
+import com.integra.demo.exception.NotFoundException;
 import com.integra.demo.repositories.MateriaRepository;
 
 @Service
 public class MateriaService {
 
-	  private final MateriaRepository materiaRepository;
-	  
-	  public MateriaService(MateriaRepository materiaRepository) {
-	        this.materiaRepository = materiaRepository;
-	    }
+    private final MateriaRepository materiaRepository;
 
-	  //cadastrar uma materia
-	  public Materia cadastrarMateria(Materia materia) {
-	        return materiaRepository.save(materia);
-	    }
+    public MateriaService(MateriaRepository materiaRepository) {
+        this.materiaRepository = materiaRepository;
+    }
 
-//Listar todas materias
-	    public List<Materia> listarTodasMaterias() {
-	        return materiaRepository.findAll();
-	    }
-	    
-	    //buscar por id
-	    public Materia buscarPorIdMateria(Long id) {
-	        return materiaRepository.findById(id)
-	                .orElseThrow(() -> new RuntimeException("Matéria não encontrada"));
-	    }
+    public Materia cadastrarMateria(Materia materia) {
+        return materiaRepository.save(materia);
+    }
 
-	  //atualizar
-	    public Materia atualizar(Long id, Materia materia) {
-	        Materia existente = buscarPorIdMateria(id);
-	        existente.setNomeMateria(materia.getNomeMateria());
-	        return materiaRepository.save(existente);
-	    }
-	    
-	    //desisntgar
-	    public void deletarMateria(Long id) {
-			  materiaRepository.deleteById(id);
-		    }
-	    
+    public List<Materia> listarTodasMaterias() {
+        return materiaRepository.findAll();
+    }
 
+    public Materia buscarPorIdMateria(Long id) {
+        return materiaRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Matéria não encontrada"));
+    }
+
+    public Materia atualizar(Long id, Materia materia) {
+        Materia existente = buscarPorIdMateria(id);
+        existente.setNomeMateria(materia.getNomeMateria());
+        return materiaRepository.save(existente);
+    }
+
+    public void deletarMateria(Long id) {
+        materiaRepository.deleteById(id);
+    }
 }

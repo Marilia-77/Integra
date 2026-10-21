@@ -37,6 +37,8 @@ public class SecurityConfig {
                 .requestMatchers("/aluno").permitAll()                       // ajuste conforme necessidade
                 .requestMatchers("/professores").permitAll()
                 .requestMatchers("/professores/login").permitAll()
+                .requestMatchers("/nota/**", "/frequencia/**", "/ocorrencia/**",
+                        "/materia/**", "/turma/**", "/recomendacoes/**").hasAnyRole("ADMIN", "PROFESSOR")
 
                 // 🔒 Rotas protegidas (descomente quando estiver pronto)
                 // .requestMatchers("/usuarios/**").hasRole("ADMIN")

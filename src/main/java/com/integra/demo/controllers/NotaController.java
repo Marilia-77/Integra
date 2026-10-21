@@ -9,9 +9,10 @@ import com.integra.demo.dto.NotaRequestDTO;
 import com.integra.demo.dto.NotaResponseDTO;
 import com.integra.demo.services.NotaService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/nota")
-@CrossOrigin(origins = "*")
 public class NotaController {
 
     private final NotaService notaService;
@@ -21,7 +22,7 @@ public class NotaController {
     }
 
     @PostMapping
-    public ResponseEntity<NotaResponseDTO> cadastrar(@RequestBody NotaRequestDTO dto) {
+    public ResponseEntity<NotaResponseDTO> cadastrar(@RequestBody @Valid NotaRequestDTO dto) {
         return ResponseEntity.ok(notaService.cadastrarNotas(dto));
     }
 
@@ -36,7 +37,8 @@ public class NotaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<NotaResponseDTO> atualizar(@PathVariable Long id, @RequestBody NotaRequestDTO dto) {
+    public ResponseEntity<NotaResponseDTO> atualizar(@PathVariable Long id,
+                                                      @RequestBody @Valid NotaRequestDTO dto) {
         return ResponseEntity.ok(notaService.atualizarNota(id, dto));
     }
 

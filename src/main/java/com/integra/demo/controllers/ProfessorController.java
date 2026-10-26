@@ -1,5 +1,6 @@
 package com.integra.demo.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -11,9 +12,10 @@ import com.integra.demo.dto.ProfessorRequestDTO;
 import com.integra.demo.dto.ProfessorResponseDTO;
 import com.integra.demo.services.ProfessorService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/professores")
-@CrossOrigin("*")
 public class ProfessorController {
 
     private final ProfessorService professorService;
@@ -23,7 +25,7 @@ public class ProfessorController {
     }
 
     @PostMapping
-    public ResponseEntity<ProfessorResponseDTO> cadastrar(@RequestBody ProfessorRequestDTO dto) {
+    public ResponseEntity<ProfessorResponseDTO> cadastrar(@RequestBody @Valid ProfessorRequestDTO dto) {
         return ResponseEntity.ok(professorService.cadastrarProfessor(dto));
     }
 
@@ -32,13 +34,19 @@ public class ProfessorController {
         return ResponseEntity.ok(professorService.listarTodosProfessor());
     }
 
+    @GetMapping("/me")
+    public ResponseEntity<ProfessorResponseDTO> buscarMeuPerfil(Principal principal) {
+        return ResponseEntity.ok(professorService.buscarPorEmail(principal.getName()));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ProfessorResponseDTO> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(professorService.buscarPorIdProfessor(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProfessorResponseDTO> atualizar(@PathVariable Long id, @RequestBody ProfessorRequestDTO dto) {
+    public ResponseEntity<ProfessorResponseDTO> atualizar(@PathVariable Long id,
+                                                           @RequestBody @Valid ProfessorRequestDTO dto) {
         return ResponseEntity.ok(professorService.atualizarProfessor(id, dto));
     }
 
@@ -48,9 +56,8 @@ public class ProfessorController {
         return ResponseEntity.noContent().build();
     }
 
-    // ✅ NOVO: Rota de Login do Professor
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO dto) {
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginRequestDTO dto) {
         return ResponseEntity.ok(professorService.login(dto));
     }
 }

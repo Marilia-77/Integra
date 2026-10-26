@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.integra.demo.dto.AlunoRequestDTO;
 import com.integra.demo.dto.AlunoResponseDTO;
@@ -80,12 +81,21 @@ public class AlunoService {
         return toResponse(alunoRepository.save(a));
     }
 
+    @Transactional(readOnly = true)
     public List<AlunoResponseDTO> listarTodosAlunos() {
         return alunoRepository.findAll().stream().map(this::toResponse).collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     public AlunoResponseDTO buscarPorIdAluno(Long id) {
         Aluno a = alunoRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Aluno não encontrado"));
+        return toResponse(a);
+    }
+
+    @Transactional(readOnly = true)
+    public AlunoResponseDTO buscarPorEmail(String email) {
+        Aluno a = alunoRepository.findByEmailAluno(email)
                 .orElseThrow(() -> new NotFoundException("Aluno não encontrado"));
         return toResponse(a);
     }
@@ -113,6 +123,7 @@ public class AlunoService {
         return new LoginResponseDTO(token, a.getEmailAluno(), "ALUNO");
     }
 
+    @Transactional(readOnly = true)
     public List<AlunoResponseDTO> listarAlunosPorTurma(Long idTurma) {
         Turma t = turmaRepository.findById(idTurma)
                 .orElseThrow(() -> new NotFoundException("Turma não encontrada"));

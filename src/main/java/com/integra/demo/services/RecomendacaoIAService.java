@@ -78,6 +78,12 @@ public class RecomendacaoIAService {
         return toResponse(recomendacaoIARepository.save(recomendacao));
     }
 
+    public RecomendacaoIAResponseDTO buscarPorOcorrencia(Long idOcorrencia) {
+        RecomendacaoIA r = recomendacaoIARepository.buscarPorIdOcorrencia(idOcorrencia)
+                .orElseThrow(() -> new NotFoundException("Nenhuma recomendação gerada para esta ocorrência"));
+        return toResponse(r);
+    }
+
     public List<RecomendacaoIAResponseDTO> listarTodasRecomendacoes() {
         return recomendacaoIARepository.findAll().stream().map(this::toResponse).collect(Collectors.toList());
     }

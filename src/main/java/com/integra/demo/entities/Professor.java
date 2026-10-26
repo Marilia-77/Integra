@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -18,73 +19,49 @@ import jakarta.persistence.Table;
 @Table(name = "professor")
 public class Professor {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idProfessor;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idProfessor;
 
-	private String nomeProfessor;
+    private String nomeProfessor;
 
-	@Column(unique = true, nullable = false)
-	private String emailProfessor;
+    @Column(unique = true, nullable = false)
+    private String emailProfessor;
 
-	private String senhaProfessor;
+    private String senhaProfessor;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "professor")
-	private List<Ocorrencia> ocorrencias;
+    @JsonIgnore
+    @OneToMany(mappedBy = "professor")
+    private List<Ocorrencia> ocorrencias;
 
-	@ManyToOne
-	@JoinColumn(name = "id_materia")
-	private Materia materia;
+    @ManyToOne
+    @JoinColumn(name = "id_materia")
+    private Materia materia;
 
-	public Professor() {
-	}
+    @JsonIgnore
+    @ManyToMany(mappedBy = "professores")
+    private List<Turma> turmas;
 
-	public Long getIdProfessor() {
-		return idProfessor;
-	}
+    public Professor() {}
 
-	public void setIdProfessor(Long idProfessor) {
-		this.idProfessor = idProfessor;
-	}
+    public Long getIdProfessor() { return idProfessor; }
+    public void setIdProfessor(Long idProfessor) { this.idProfessor = idProfessor; }
 
-	public String getNomeProfessor() {
-		return nomeProfessor;
-	}
+    public String getNomeProfessor() { return nomeProfessor; }
+    public void setNomeProfessor(String nomeProfessor) { this.nomeProfessor = nomeProfessor; }
 
-	public void setNomeProfessor(String nomeProfessor) {
-		this.nomeProfessor = nomeProfessor;
-	}
+    public String getEmailProfessor() { return emailProfessor; }
+    public void setEmailProfessor(String emailProfessor) { this.emailProfessor = emailProfessor; }
 
-	public String getEmailProfessor() {
-		return emailProfessor;
-	}
+    public String getSenhaProfessor() { return senhaProfessor; }
+    public void setSenhaProfessor(String senhaProfessor) { this.senhaProfessor = senhaProfessor; }
 
-	public void setEmailProfessor(String emailProfessor) {
-		this.emailProfessor = emailProfessor;
-	}
+    public List<Ocorrencia> getOcorrencias() { return ocorrencias; }
+    public void setOcorrencias(List<Ocorrencia> ocorrencias) { this.ocorrencias = ocorrencias; }
 
-	public String getSenhaProfessor() {
-		return senhaProfessor;
-	}
+    public Materia getMateria() { return materia; }
+    public void setMateria(Materia materia) { this.materia = materia; }
 
-	public void setSenhaProfessor(String senhaProfessor) {
-		this.senhaProfessor = senhaProfessor;
-	}
-
-	public List<Ocorrencia> getOcorrencias() {
-		return ocorrencias;
-	}
-
-	public void setOcorrencias(List<Ocorrencia> ocorrencias) {
-		this.ocorrencias = ocorrencias;
-	}
-
-	public Materia getMateria() {
-		return materia;
-	}
-
-	public void setMateria(Materia materia) {
-		this.materia = materia;
-	}
+    public List<Turma> getTurmas() { return turmas; }
+    public void setTurmas(List<Turma> turmas) { this.turmas = turmas; }
 }

@@ -1,5 +1,6 @@
 package com.integra.demo.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,11 @@ public class AlunoController {
     @GetMapping
     public ResponseEntity<List<AlunoResponseDTO>> listarTodos() {
         return ResponseEntity.ok(alunoService.listarTodosAlunos());
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<AlunoResponseDTO> buscarMeuPerfil(Principal principal) {
+        return ResponseEntity.ok(alunoService.buscarPorEmail(principal.getName()));
     }
 
     @GetMapping("/{id}")

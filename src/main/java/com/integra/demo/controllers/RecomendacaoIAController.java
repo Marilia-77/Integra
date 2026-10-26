@@ -31,6 +31,11 @@ public class RecomendacaoIAController {
         return ResponseEntity.ok(recomendacaoIAService.gerarRecomendacaoPorOcorrencia(idOcorrencia));
     }
 
+    @GetMapping("/ocorrencia/{idOcorrencia}")
+    public ResponseEntity<RecomendacaoIAResponseDTO> buscarPorOcorrencia(@PathVariable Long idOcorrencia) {
+        return ResponseEntity.ok(recomendacaoIAService.buscarPorOcorrencia(idOcorrencia));
+    }
+
     @GetMapping
     public ResponseEntity<List<RecomendacaoIAResponseDTO>> listarTodas() {
         return ResponseEntity.ok(recomendacaoIAService.listarTodasRecomendacoes());

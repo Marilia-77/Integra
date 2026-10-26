@@ -1,0 +1,422 @@
+.portal-aluno {
+	--portal-roxo: #321d50;
+	--portal-lilas: #c9adff;
+	--portal-fundo: #fffaff;
+	min-height: 100vh;
+	color: #24143a;
+	background: var(--portal-fundo);
+	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+.portal-topbar {
+	height: 45px;
+	padding: 0 18px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #eee8f0;
+}
+
+.portal-topbar h1 {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.portal-acoes {
+	display: flex;
+	align-items: center;
+	gap: 17px;
+}
+
+.portal-acoes button {
+	padding: 0;
+	border: 0;
+	color: #51475a;
+	background: transparent;
+	font-size: 17px;
+	cursor: pointer;
+}
+
+.portal-avatar,
+.portal-icone-pessoa {
+	display: grid;
+	flex: 0 0 auto;
+	place-items: center;
+	border-radius: 50%;
+	color: var(--portal-roxo);
+	background: #d7c2ff;
+	font-weight: 700;
+}
+
+.portal-avatar {
+	width: 27px;
+	height: 27px;
+	border: 2px solid #ddd2e5;
+	color: white;
+	background: #263b3c;
+	font-size: 12px;
+}
+
+.portal-layout {
+	display: grid;
+	min-height: calc(100vh - 45px);
+	grid-template-columns: 176px minmax(0, 1fr);
+}
+
+.portal-sidebar {
+	padding: 21px 9px;
+	background: #f7f2f7;
+}
+
+.portal-identificacao {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	padding: 0 14px 32px;
+}
+
+.portal-icone-pessoa {
+	width: 33px;
+	height: 33px;
+	border-radius: 9px;
+	font-size: 18px;
+}
+
+.portal-identificacao strong,
+.portal-identificacao span {
+	display: block;
+}
+
+.portal-identificacao strong {
+	max-width: 110px;
+	overflow: hidden;
+	font-size: 13px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.portal-identificacao span {
+	margin-top: 2px;
+	color: #6e6674;
+	font-size: 10px;
+}
+
+.portal-link-ativo {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 33px;
+	padding: 0 9px;
+	border-radius: 8px;
+	color: #4d3c70;
+	background: #c9adff;
+	font-size: 11px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.portal-link-ativo span {
+	font-size: 15px;
+}
+
+.portal-conteudo {
+	width: min(100%, 940px);
+	padding: 21px 16px 40px;
+}
+
+.portal-boas-vindas {
+	min-height: 121px;
+	padding: 24px 28px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	border-radius: 17px;
+	color: #fff;
+	background: var(--portal-roxo);
+}
+
+.portal-boas-vindas-texto {
+	max-width: 390px;
+}
+
+.portal-boas-vindas h2 {
+	margin: 0 0 5px;
+	font-size: 23px;
+}
+
+.portal-boas-vindas p {
+	margin: 0;
+	color: #e8dfef;
+	font-size: 12px;
+	line-height: 1.55;
+}
+
+.portal-indicadores {
+	display: flex;
+	gap: 16px;
+}
+
+.portal-indicador {
+	width: 96px;
+	height: 66px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #57416e;
+	border-radius: 12px;
+	background: #49345f;
+}
+
+.portal-indicador strong {
+	color: #c9adff;
+	font-size: 17px;
+}
+
+.portal-indicador span {
+	margin-top: 2px;
+	color: #e7deee;
+	font-size: 8px;
+	text-transform: uppercase;
+}
+
+.portal-cartoes {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-top: 43px;
+}
+
+.portal-card {
+	width: min(100%, 211px);
+	min-height: 242px;
+	padding: 16px;
+	border: 1px solid #f0ebf1;
+	border-radius: 17px;
+	background: #fff;
+	box-shadow: 0 5px 14px #3320440d;
+}
+
+.portal-card-titulo,
+.portal-frequencia-cabecalho {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.portal-card-titulo {
+	justify-content: flex-start;
+	gap: 9px;
+	margin-bottom: 14px;
+}
+
+.portal-card h2 {
+	margin: 0;
+	font-size: 14px;
+}
+
+.portal-icone {
+	width: 24px;
+	height: 24px;
+	display: grid;
+	flex: 0 0 auto;
+	place-items: center;
+	border-radius: 8px;
+	font-size: 15px;
+}
+
+.portal-icone-roxo {
+	color: #6745a1;
+	background: #d8c2ff;
+}
+
+.portal-icone-vermelho {
+	color: #b5161e;
+	background: #ffd7d5;
+}
+
+.portal-medias ul {
+	margin: 0;
+	padding: 0 4px 0 8px;
+	list-style: none;
+}
+
+.portal-medias li {
+	min-height: 41px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	color: #59535d;
+	font-size: 11px;
+}
+
+.portal-medias li strong {
+	color: var(--portal-roxo);
+	font-size: 11px;
+}
+
+.portal-frequencia {
+	width: min(100%, 212px);
+	min-height: 174px;
+	padding: 16px 18px;
+	border-top: 1px solid #f0ebf1;
+}
+
+.portal-frequencia-alerta {
+	border-top-color: #ed3437;
+	box-shadow: inset 3px 0 #d72429, 0 5px 14px #3320440d;
+}
+
+.portal-etiqueta-alerta {
+	padding: 4px 9px;
+	border-radius: 12px;
+	color: #a91519;
+	background: #ffd9d7;
+	font-size: 9px;
+}
+
+.portal-frequencia h2 {
+	margin: 17px 0 4px;
+	font-size: 13px;
+}
+
+.portal-frequencia p {
+	min-height: 49px;
+	margin: 0;
+	color: #625c65;
+	font-size: 10px;
+	line-height: 1.45;
+}
+
+.portal-barra-frequencia {
+	height: 6px;
+	overflow: hidden;
+	margin-top: 13px;
+	border-radius: 8px;
+	background: #e8e2e8;
+}
+
+.portal-barra-frequencia span {
+	height: 100%;
+	display: block;
+	border-radius: inherit;
+	background: #cf2327;
+}
+
+.portal-privacidade {
+	width: min(100%, 326px);
+	min-height: 136px;
+	display: flex;
+	align-items: flex-start;
+	gap: 15px;
+	margin-top: 47px;
+	padding: 27px 25px;
+	border: 1px dashed #d7cedb;
+	border-radius: 17px;
+	background: #f0eaf1;
+}
+
+.portal-icone-escudo {
+	margin-top: 4px;
+	color: #7051a4;
+	font-size: 23px;
+}
+
+.portal-privacidade h2 {
+	margin: 0 0 3px;
+	font-size: 13px;
+}
+
+.portal-privacidade p {
+	margin: 0;
+	color: #665e69;
+	font-size: 10px;
+	line-height: 1.45;
+}
+
+.portal-links-privacidade {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 14px;
+	font-size: 9px;
+}
+
+.portal-links-privacidade a {
+	color: #654794;
+	font-weight: 700;
+}
+
+.portal-links-privacidade span {
+	color: #b5aabb;
+}
+
+@media (max-width: 640px) {
+	.portal-topbar {
+		padding: 0 12px;
+	}
+
+	.portal-topbar h1 {
+		font-size: 13px;
+	}
+
+	.portal-acoes {
+		gap: 11px;
+	}
+
+	.portal-layout {
+		grid-template-columns: 1fr;
+	}
+
+	.portal-sidebar {
+		padding: 12px;
+	}
+
+	.portal-identificacao {
+		padding: 0 3px 12px;
+	}
+
+	.portal-conteudo {
+		padding: 12px;
+	}
+
+	.portal-boas-vindas {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 18px;
+		padding: 20px;
+	}
+
+	.portal-indicadores {
+		width: 100%;
+	}
+
+	.portal-indicador {
+		flex: 1;
+	}
+
+	.portal-cartoes {
+		gap: 12px;
+		margin-top: 20px;
+	}
+
+	.portal-card,
+	.portal-frequencia {
+		width: 100%;
+		min-height: initial;
+	}
+
+	.portal-medias li {
+		min-height: 38px;
+	}
+
+	.portal-privacidade {
+		width: 100%;
+		margin-top: 20px;
+		padding: 22px 18px;
+	}
+}

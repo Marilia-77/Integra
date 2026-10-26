@@ -1,0 +1,661 @@
+.turmas-pagina {
+	--turmas-roxo: #281541;
+	--turmas-roxo-claro: #c9adff;
+	--turmas-fundo: #fffaff;
+	min-height: 100vh;
+	color: var(--turmas-roxo);
+	background: var(--turmas-fundo);
+	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+.turmas-layout {
+	min-height: calc(100vh - 40px);
+	display: grid;
+	grid-template-columns: 155px minmax(0, 1fr);
+}
+
+.turmas-sidebar {
+	position: relative;
+	min-height: calc(100vh - 40px);
+	padding: 18px 8px 58px;
+	background: #f8f3f8;
+}
+
+.turmas-perfil-docente {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0 11px 30px;
+}
+
+.turmas-icone-perfil {
+	width: 30px;
+	height: 30px;
+	display: grid;
+	flex: 0 0 auto;
+	place-items: center;
+	border-radius: 8px;
+	color: #563f83;
+	background: #e0caff;
+	font-size: 16px;
+}
+
+.turmas-perfil-docente strong,
+.turmas-perfil-docente span {
+	display: block;
+}
+
+.turmas-perfil-docente strong {
+	font-size: 11px;
+}
+
+.turmas-perfil-docente span {
+	margin-top: 3px;
+	color: #6d6472;
+	font-size: 8px;
+	line-height: 1.4;
+}
+
+.turmas-menu-lateral {
+	display: grid;
+	gap: 5px;
+}
+
+.turmas-menu-lateral a {
+	min-height: 27px;
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	padding: 0 8px;
+	border-radius: 7px;
+	color: #625a69;
+	font-size: 9px;
+	text-decoration: none;
+}
+
+.turmas-menu-lateral a span {
+	font-size: 13px;
+}
+
+.turmas-menu-lateral a.turmas-menu-ativa {
+	color: #4d367d;
+	background: #c9adff;
+	font-weight: 700;
+}
+
+.turmas-menu-lateral a:hover {
+	background: #eee5f4;
+}
+
+.turmas-nova-anotacao {
+	position: absolute;
+	right: 8px;
+	bottom: 9px;
+	left: 8px;
+	min-height: 29px;
+	border: 0;
+	border-radius: 7px;
+	color: white;
+	background: #27103f;
+	font: inherit;
+	font-size: 9px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.turmas-conteudo {
+	width: min(100%, 1160px);
+	min-width: 0;
+	margin: 0 auto;
+	padding: 16px 10px 30px;
+}
+
+.turmas-cabecalho-materia {
+	min-height: 140px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 18px;
+	padding: 20px 24px;
+	border-radius: 13px;
+	color: white;
+	background: linear-gradient(110deg, #463a2f, #493c31);
+}
+
+.turmas-titulo-materia {
+	min-width: 0;
+}
+
+.turmas-titulo-materia > span {
+	color: #e3cc99;
+	font-size: 8px;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+}
+
+.turmas-titulo-materia h1 {
+	margin: 5px 0 4px;
+	font-size: 20px;
+	line-height: 1.2;
+}
+
+.turmas-titulo-materia p {
+	max-width: 410px;
+	margin: 0;
+	color: #e3d9c9;
+	font-size: 10px;
+	line-height: 1.45;
+}
+
+.turmas-acoes-materia {
+	display: flex;
+	flex: 0 0 auto;
+	gap: 7px;
+}
+
+.turmas-acoes-materia a {
+	min-height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	padding: 0 11px;
+	border: 1px solid #807466;
+	border-radius: 6px;
+	color: white;
+	font-size: 9px;
+	font-weight: 700;
+	line-height: 1.25;
+	text-align: center;
+	text-decoration: none;
+}
+
+.turmas-acoes-materia a span {
+	font-size: 13px;
+}
+
+.turmas-acoes-materia .turmas-botao-secundario {
+	max-width: 115px;
+	background: #ffffff14;
+}
+
+.turmas-acoes-materia .turmas-botao-principal {
+	max-width: 120px;
+	border-color: #eee8f0;
+	color: var(--turmas-roxo);
+	background: #fff;
+}
+
+.turmas-alerta {
+	min-height: 145px;
+	display: grid;
+	grid-template-columns: 48px minmax(0, 1fr) 130px;
+	align-items: center;
+	gap: 14px;
+	margin-top: 22px;
+	padding: 18px 22px;
+	border: 1px solid #76664a;
+	border-radius: 12px;
+	background: #fff;
+	box-shadow: 0 3px 9px #291a370c;
+}
+
+.turmas-alerta-simbolo {
+	width: 38px;
+	height: 38px;
+	display: grid;
+	place-items: center;
+	border-radius: 50%;
+	color: #f6e2b6;
+	background: #352606;
+	font-size: 17px;
+}
+
+.turmas-alerta-etiquetas {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 8px;
+}
+
+.turmas-alerta-etiquetas > span {
+	padding: 2px 4px;
+	color: #ead5a4;
+	background: #342606;
+	font-size: 6px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.turmas-alerta-etiquetas strong {
+	color: #c52323;
+}
+
+.turmas-alerta-conteudo h2 {
+	margin: 5px 0 4px;
+	font-size: 13px;
+}
+
+.turmas-alerta-conteudo p {
+	max-width: 570px;
+	margin: 0;
+	color: #665f69;
+	font-size: 9px;
+	line-height: 1.5;
+}
+
+.turmas-alerta-acoes {
+	display: grid;
+	justify-items: center;
+	gap: 7px;
+}
+
+.turmas-alerta-acoes a {
+	width: 100%;
+	min-height: 30px;
+	display: grid;
+	place-items: center;
+	padding: 5px;
+	border-radius: 6px;
+	color: #fff;
+	background: #392904;
+	font-size: 9px;
+	font-weight: 700;
+	text-align: center;
+	text-decoration: none;
+}
+
+.turmas-alerta-acoes span {
+	color: #6e6671;
+	font-size: 7px;
+}
+
+.turmas-alunos-risco {
+	margin-top: 34px;
+	scroll-margin-top: 55px;
+}
+
+.turmas-risco-cabecalho {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 13px;
+}
+
+.turmas-risco-cabecalho h2 {
+	margin: 0;
+	font-size: 15px;
+}
+
+.turmas-risco-cabecalho h2 span {
+	margin-right: 4px;
+	color: #d72b30;
+	font-size: 13px;
+}
+
+.turmas-risco-cabecalho > span {
+	color: #6e6672;
+	font-size: 8px;
+}
+
+.turmas-grade-alunos {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 13px;
+}
+
+.turmas-card-aluno {
+	min-height: 201px;
+	padding: 15px 14px;
+	border: 1px solid #e8e2e9;
+	border-top: 3px solid #7252ac;
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 0 4px 10px #291a370c;
+}
+
+.turmas-aluno-critico {
+	border-top-color: #d92c32;
+}
+
+.turmas-aluno-atencao {
+	border-top-color: #392e22;
+}
+
+.turmas-aluno-monitorar {
+	border-top-color: #7252ac;
+}
+
+.turmas-aluno-topo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.turmas-avatar-aluno {
+	width: 33px;
+	height: 33px;
+	display: grid;
+	place-items: center;
+	overflow: hidden;
+	border: 2px solid #efe8f1;
+	border-radius: 50%;
+	color: #563e7c;
+	background: #dfd0e9;
+	font-size: 9px;
+	font-weight: 700;
+}
+
+.turmas-avatar-aluno img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.turmas-nivel-aluno {
+	padding: 4px 8px;
+	border-radius: 10px;
+	color: #a82427;
+	background: #ffd9d8;
+	font-size: 7px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.turmas-aluno-atencao .turmas-nivel-aluno {
+	color: #81530e;
+	background: #ffe2b1;
+}
+
+.turmas-aluno-monitorar .turmas-nivel-aluno {
+	color: #624092;
+	background: #ecddff;
+}
+
+.turmas-card-aluno h3 {
+	margin: 13px 0 4px;
+	font-size: 12px;
+}
+
+.turmas-indicador-aluno {
+	margin: 0;
+	color: #6c6470;
+	font-size: 8px;
+}
+
+.turmas-indicador-aluno strong {
+	color: #c6383b;
+	font-weight: 500;
+}
+
+.turmas-aluno-atencao .turmas-indicador-aluno strong {
+	color: #80601d;
+}
+
+.turmas-aluno-monitorar .turmas-indicador-aluno strong {
+	color: #7252ac;
+}
+
+.turmas-alerta-aluno {
+	min-height: 25px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	margin: 11px 0 5px;
+	color: #655d68;
+	font-size: 8px;
+}
+
+.turmas-aluno-critico .turmas-alerta-aluno span {
+	color: #d92c32;
+}
+
+.turmas-barra-aluno {
+	height: 5px;
+	overflow: hidden;
+	border-radius: 6px;
+	background: #e9e4e9;
+}
+
+.turmas-barra-aluno span {
+	height: 100%;
+	display: block;
+	border-radius: inherit;
+	background: #7252ac;
+}
+
+.turmas-aluno-critico .turmas-barra-aluno span {
+	background: #ce262b;
+}
+
+.turmas-aluno-atencao .turmas-barra-aluno span {
+	background: #372a1b;
+}
+
+.turmas-sem-alunos {
+	padding: 22px;
+	border: 1px dashed #d8cedd;
+	border-radius: 9px;
+	color: #675d6e;
+	background: #fff;
+	font-size: 11px;
+}
+
+.turmas-metricas {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 12px;
+	margin-top: 30px;
+	scroll-margin-top: 55px;
+}
+
+.turmas-metrica {
+	min-height: 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 7px;
+	padding: 13px 14px 10px;
+	border-bottom: 2px solid #271541;
+	border-radius: 10px;
+	background: #f3edf4;
+}
+
+.turmas-metrica > span {
+	color: #6c6470;
+	font-size: 7px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.turmas-metrica > div {
+	display: flex;
+	align-items: baseline;
+	gap: 5px;
+}
+
+.turmas-metrica strong {
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.turmas-metrica small {
+	color: #7252ac;
+	font-size: 7px;
+}
+
+.turmas-metrica-aulas {
+	border-bottom-color: #7252ac;
+}
+
+.turmas-metrica-aulas small {
+	color: #6f6672;
+}
+
+.turmas-metrica-atividades {
+	border-bottom-color: #46382b;
+}
+
+.turmas-metrica-atividades small {
+	padding: 2px 4px;
+	color: #45350f;
+	background: #f5d883;
+	font-size: 6px;
+	text-transform: uppercase;
+}
+
+.turmas-metrica-criticos {
+	border-bottom-color: #d92c32;
+}
+
+.turmas-metrica-criticos strong,
+.turmas-metrica-criticos small {
+	color: #d92c32;
+}
+
+.turmas-anotacao-campo {
+	display: grid;
+	gap: 6px;
+	margin-top: 22px;
+	color: #51475a;
+	font-size: 10px;
+}
+
+.turmas-anotacao-campo textarea {
+	width: 100%;
+	resize: vertical;
+	padding: 10px;
+	border: 1px solid #e5dce9;
+	border-radius: 7px;
+	color: var(--turmas-roxo);
+	background: #fff;
+	font: inherit;
+	font-size: 10px;
+}
+
+@media (max-width: 760px) {
+	.turmas-layout {
+		grid-template-columns: 136px minmax(0, 1fr);
+	}
+
+	.turmas-perfil-docente {
+		padding-right: 4px;
+		padding-left: 4px;
+	}
+
+	.turmas-conteudo {
+		padding: 12px 9px 24px;
+	}
+
+	.turmas-cabecalho-materia {
+		align-items: flex-start;
+		flex-direction: column;
+		padding: 17px;
+	}
+
+	.turmas-acoes-materia {
+		width: 100%;
+	}
+
+	.turmas-acoes-materia a {
+		flex: 1;
+	}
+
+	.turmas-alerta {
+		grid-template-columns: 36px minmax(0, 1fr);
+		gap: 10px;
+		padding: 15px;
+	}
+
+	.turmas-alerta-acoes {
+		grid-column: 2;
+		justify-items: start;
+	}
+
+	.turmas-alerta-acoes a {
+		width: auto;
+		padding: 7px 12px;
+	}
+
+	.turmas-grade-alunos {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.turmas-metricas {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 560px) {
+	.turmas-layout {
+		grid-template-columns: 1fr;
+	}
+
+	.turmas-sidebar {
+		min-height: initial;
+		padding: 10px 12px;
+	}
+
+	.turmas-perfil-docente {
+		padding: 0 0 10px;
+	}
+
+	.turmas-menu-lateral {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.turmas-nova-anotacao {
+		position: static;
+		width: 100%;
+		margin-top: 8px;
+	}
+
+	.turmas-conteudo {
+		padding: 10px 12px 22px;
+	}
+
+	.turmas-titulo-materia h1 {
+		font-size: 18px;
+	}
+
+	.turmas-alerta {
+		grid-template-columns: 1fr;
+	}
+
+	.turmas-alerta-simbolo {
+		display: none;
+	}
+
+	.turmas-alerta-acoes {
+		grid-column: 1;
+	}
+
+	.turmas-grade-alunos {
+		grid-template-columns: 1fr;
+	}
+
+	.turmas-card-aluno {
+		min-height: 175px;
+	}
+}
+
+@media (max-width: 380px) {
+	.turmas-acoes-topo {
+		gap: 8px;
+	}
+
+	.turmas-acoes-materia {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.turmas-acoes-materia a {
+		max-width: none !important;
+	}
+
+	.turmas-metricas {
+		grid-template-columns: 1fr;
+	}
+}

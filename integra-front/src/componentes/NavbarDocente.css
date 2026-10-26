@@ -1,0 +1,166 @@
+.navbar-docente {
+	height: 52px;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+	align-items: center;
+	gap: 20px;
+	padding: 0 18px;
+	border-bottom: 1px solid #eee7f0;
+	color: #27123f;
+	background: #fffaff;
+	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+.navbar-docente-marca {
+	min-width: 0;
+	color: inherit;
+	font-size: 14px;
+	font-weight: 800;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.navbar-docente-links {
+	height: 100%;
+	display: flex;
+	align-items: stretch;
+	gap: 24px;
+}
+
+.navbar-docente-links a {
+	display: flex;
+	align-items: center;
+	border-bottom: 2px solid transparent;
+	color: #655c6b;
+	font-size: 10px;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.navbar-docente-links a:hover,
+.navbar-docente-links a.navbar-docente-ativa {
+	border-bottom-color: #8060bc;
+	color: #27123f;
+}
+
+.navbar-docente-links a.navbar-docente-ativa {
+	font-weight: 700;
+}
+
+.navbar-docente-acoes {
+	display: flex;
+	align-items: center;
+	justify-self: end;
+	gap: 12px;
+}
+
+.navbar-docente-acoes > button {
+	padding: 0;
+	border: 0;
+	color: #51475a;
+	background: transparent;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.navbar-docente-busca {
+	width: 138px;
+	height: 29px;
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	padding: 0 9px;
+	border-radius: 16px;
+	color: #766c7c;
+	background: #f5f0f6;
+}
+
+.navbar-docente-busca span {
+	font-size: 18px;
+	line-height: 1;
+}
+
+.navbar-docente-busca input {
+	width: 100%;
+	min-width: 0;
+	border: 0;
+	outline: 0;
+	color: #27123f;
+	background: transparent;
+	font: inherit;
+	font-size: 10px;
+}
+
+.navbar-docente-busca input::placeholder {
+	color: #8d8493;
+}
+
+.navbar-docente-avatar {
+	width: 25px;
+	height: 25px;
+	display: grid;
+	flex: 0 0 auto;
+	place-items: center;
+	border: 2px solid #ded3e7;
+	border-radius: 50%;
+	color: #fff;
+	background: #344345;
+	font-size: 9px;
+	font-weight: 700;
+}
+
+@media (max-width: 760px) {
+	.navbar-docente {
+		height: auto;
+		min-height: 52px;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 0 14px;
+		padding: 8px 14px 0;
+	}
+
+	.navbar-docente-marca {
+		grid-column: 1;
+		grid-row: 1;
+		font-size: 13px;
+	}
+
+	.navbar-docente-links {
+		grid-column: 1 / -1;
+		grid-row: 2;
+		justify-self: center;
+		gap: 22px;
+	}
+
+	.navbar-docente-acoes {
+		grid-column: 2;
+		grid-row: 1;
+		gap: 9px;
+	}
+
+	.navbar-docente-busca {
+		width: 105px;
+	}
+}
+
+@media (max-width: 420px) {
+	.navbar-docente {
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+
+	.navbar-docente-marca {
+		font-size: 11px;
+	}
+
+	.navbar-docente-links {
+		gap: 17px;
+	}
+
+	.navbar-docente-acoes {
+		gap: 7px;
+	}
+
+	.navbar-docente-busca {
+		width: 82px;
+	}
+}
